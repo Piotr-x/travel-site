@@ -13,6 +13,6 @@ gulp.task('watch', () => {
             baseDir: "app"
         }
     });
-    watch('./app/assets/styles/postcss/**/*.css', gulp.series('styles'));
+    watch('./app/assets/styles/postcss/**/*.pcss', gulp.series('styles'));
     watch(['./app/index.html', './app/assets/styles/css/style.css'], html);
 });
