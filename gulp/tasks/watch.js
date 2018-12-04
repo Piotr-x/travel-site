@@ -14,6 +14,6 @@ gulp.task('watch', () => {
         }
     });
     watch('./app/assets/styles/postcss/**/*.pcss', gulp.series('styles'));
-    watch('./app/assets/scripts/js/**/*.js', gulp.series('scripts'));
-    watch(['./app/*.html', './app/assets/styles/css/*.css', './app/assets/scripts/compiled/*.js'], html);
+    watch('./app/assets/scripts/js/**/*.js', gulp.series('scripts', html));
+    watch(['./app/*.html', './app/assets/styles/css/*.css'], html);
 });

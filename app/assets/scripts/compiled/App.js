@@ -91,8 +91,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _modules_RevealOnScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+
 
 var mobileMenu = new _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_0__["default"]();
+new _modules_RevealOnScroll__WEBPACK_IMPORTED_MODULE_1__["default"](".feature-item", 0.85);
+new _modules_RevealOnScroll__WEBPACK_IMPORTED_MODULE_1__["default"](".testimonial", 0.65);
 
 /***/ }),
 /* 1 */
@@ -136,6 +140,63 @@ function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (MobileMenu);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var RevealOnScroll =
+/*#__PURE__*/
+function () {
+  function RevealOnScroll(els, offset) {
+    _classCallCheck(this, RevealOnScroll);
+
+    this.itemsToReveal = document.querySelectorAll(els);
+    this.revealerPoint = offset;
+    this.hideInitially();
+    this.events();
+  }
+
+  _createClass(RevealOnScroll, [{
+    key: "hideInitially",
+    value: function hideInitially() {
+      this.itemsToReveal.forEach(function (e) {
+        return e.classList.add('reveal-item');
+      });
+    }
+  }, {
+    key: "reveal",
+    value: function reveal() {
+      var _this = this;
+
+      var windowHeight = window.innerHeight;
+      this.itemsToReveal.forEach(function (e) {
+        var revealerTop = e.getBoundingClientRect().top;
+
+        if (revealerTop < windowHeight * _this.revealerPoint) {
+          e.classList.add('reveal-item--is-visible');
+        }
+      });
+    }
+  }, {
+    key: "events",
+    value: function events() {
+      window.addEventListener('scroll', this.reveal.bind(this));
+    }
+  }]);
+
+  return RevealOnScroll;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (RevealOnScroll);
 
 /***/ })
 /******/ ]);
