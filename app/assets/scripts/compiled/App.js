@@ -94,6 +94,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_RevealOnScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* harmony import */ var _modules_StickyHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 /* harmony import */ var _modules_ScrollTo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var _modules_Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
+
 
 
 
@@ -103,6 +105,7 @@ var stickyHeader = new _modules_StickyHeader__WEBPACK_IMPORTED_MODULE_2__["defau
 var scrollTo = new _modules_ScrollTo__WEBPACK_IMPORTED_MODULE_3__["default"]();
 new _modules_RevealOnScroll__WEBPACK_IMPORTED_MODULE_1__["default"](".feature-item", 0.85);
 new _modules_RevealOnScroll__WEBPACK_IMPORTED_MODULE_1__["default"](".testimonial", 0.85);
+var modal = new _modules_Modal__WEBPACK_IMPORTED_MODULE_4__["default"]();
 
 /***/ }),
 /* 1 */
@@ -320,6 +323,70 @@ function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (ScrollTo);
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Modal =
+/*#__PURE__*/
+function () {
+  function Modal() {
+    _classCallCheck(this, Modal);
+
+    this.openModalButtons = document.querySelectorAll('.open-modal');
+    this.modal = document.querySelector('.modal');
+    this.closeModalButton = document.querySelector('.modal__close');
+    this.events();
+  }
+
+  _createClass(Modal, [{
+    key: "events",
+    value: function events() {
+      var _this = this;
+
+      this.openModalButtons.forEach(function (e) {
+        e.addEventListener('click', _this.openModal.bind(_this), false);
+      });
+      this.closeModalButton.addEventListener('click', this.closeModal.bind(this));
+
+      window.onkeyup = function (e) {
+        return _this.keyPressHandler(e);
+      };
+    }
+  }, {
+    key: "keyPressHandler",
+    value: function keyPressHandler(e) {
+      if (e.keyCode == 27) {
+        this.closeModal();
+      }
+    }
+  }, {
+    key: "openModal",
+    value: function openModal() {
+      this.modal.classList.add('modal--is-visible');
+      return false;
+    }
+  }, {
+    key: "closeModal",
+    value: function closeModal() {
+      this.modal.classList.remove('modal--is-visible');
+      return false;
+    }
+  }]);
+
+  return Modal;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Modal);
 
 /***/ })
 /******/ ]);
