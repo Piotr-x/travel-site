@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "lazysizes": "^4.1.4",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "picturefill": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
